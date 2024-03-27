@@ -16,7 +16,7 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="flex items-center justify-center h-screen md:px-32 px-6 w-full bg-red-400">
+    <div className="flex items-center justify-center h-screen md:px-32 px-6 w-full ">
       <div>
         <h1 className="md:text-6xl text-3xl font-bold md:pb-20  pb-12 text-center">
           All your last minute study needs in one place
