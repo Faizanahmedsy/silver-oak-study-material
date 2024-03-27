@@ -19,7 +19,7 @@ export default function Home() {
     <div className="flex items-center justify-center h-screen md:px-32 px-6 w-full ">
       <div>
         <h1 className="md:text-6xl text-3xl font-bold md:pb-20  pb-12 text-center">
-          All your last minute study needs in one place
+          All your last minute study needs <br /> in one place
         </h1>
         <div className="grid md:grid-cols-3 gap-6">
           <Card className="w-full">
