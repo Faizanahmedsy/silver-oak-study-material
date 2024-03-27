@@ -32,7 +32,7 @@ export default function Home() {
               <CardHeader>
                 <CardTitle>Question Bank Solution</CardTitle>
                 <CardDescription>
-                  All Subject Question Banks and Solutions
+                  All Subject Question Banks and Solutions of 4 Semester
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -88,7 +88,7 @@ export default function Home() {
         Made with ❤️ by
         <div className="pl-1 text-blue-800">
           <Link href={"https://www.linkedin.com/in/faizanahmed-saiyed/"}>
-            Faizan
+            Faizan & Pavandeep
           </Link>
         </div>
       </div>
