@@ -41,6 +41,10 @@ export default function Home() {
               </TabsList>
             </div>
             <TabsContent value="btechSem4">
+              <div className="flex justify-between gap-4  py-2">
+                <QuickAccess1>Exam Time Table</QuickAccess1>
+                <QuickAccess2>Academic Calender</QuickAccess2>
+              </div>
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="w-full">
                   <CardHeader>
@@ -129,5 +133,21 @@ export default function Home() {
         </div>
       </div>
     </>
+  );
+}
+
+export function QuickAccess1({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="dark:bg-emerald-800 bg-emerald-200  dark:te8xt-emerald-200  text-emerald-00  font-bold rounded-lg w-full text-center py-2 text-sm">
+      {children}
+    </div>
+  );
+}
+
+export function QuickAccess2({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="dark:bg-violet-800 bg-violet-200 dark:text-violet-200 text-violet-800 font-bold rounded-lg w-full text-center py-2 text-sm flex justify-center items-center">
+      {children}
+    </div>
   );
 }
