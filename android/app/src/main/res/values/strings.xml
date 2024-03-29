@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">sou-study-buddy</string>
+    <string name="title_activity_main">sou-study-buddy</string>
+    <string name="package_name">com.soustudybuddy.app</string>
+    <string name="custom_url_scheme">com.soustudybuddy.app</string>
+</resources>
