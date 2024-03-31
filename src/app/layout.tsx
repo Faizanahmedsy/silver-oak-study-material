@@ -10,6 +10,7 @@ import BottomBar from "@/components/modules/landing/bottom-bar/bottom-bar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  manifest: "/manifest.json",
   title: "SOU Study Material",
   description: "SOU Study Material",
 };
