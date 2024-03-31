@@ -16,19 +16,55 @@ import { Link2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import dynamic from "next/dynamic";
 
 export default function Home() {
   const router = useRouter();
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  });
+
+  function calculateTimeLeft() {
+    const targetDate = dayjs("2024-04-04T12:30:00");
+    const now = dayjs();
+    // console.log("targetDate", targetDate.format("YYYY-MM-DD HH:mm:ss"));
+    // console.log("now", now.format("YYYY-MM-DD HH:mm:ss"));
+    const difference = targetDate.diff(now);
+
+    if (difference <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    const days = targetDate.diff(now, "day");
+    const hours = targetDate.diff(now, "hour") % 24;
+    const minutes = targetDate.diff(now, "minute") % 60;
+    const seconds = targetDate.diff(now, "second") % 60;
+
+    return { days, hours, minutes, seconds };
+  }
 
   return (
     <>
-      <Navbar />
       <div className="flex items-center justify-center min-h-screen md:px-32 px-6 w-full ">
         <div>
-          <h1 className="md:text-6xl text-3xl font-bold md:pb-20  pb-12 text-center">
-            All your last minute study needs <br /> in one place
-          </h1>
-
+          <div className="font-bold flex justify-center items-center flex-col py-4">
+            <div className="font-medium text-muted-foreground">
+              Time left till exams
+            </div>
+            <div className="text-2xl">
+              {timeLeft.days} Days {timeLeft.hours} Hours
+            </div>
+            <div>
+              {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds
+            </div>
+          </div>
           <Tabs defaultValue="btechSem4" className="w-full">
             <div className="flex justify-center items-center w-full">
               <TabsList className="w-full">
@@ -42,8 +78,22 @@ export default function Home() {
             </div>
             <TabsContent value="btechSem4">
               <div className="flex justify-between gap-4  py-2">
-                <QuickAccess1>Exam Time Table</QuickAccess1>
-                <QuickAccess2>Academic Calender</QuickAccess2>
+                <Link
+                  href="https://drive.google.com/file/d/1eCdVhzZ-6DQOnsa7AZb0JpVZPAm19Cmw/view?usp=sharing"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="w-full"
+                >
+                  <QuickAccess1>Exam Time Table</QuickAccess1>
+                </Link>
+                <Link
+                  href="https://drive.google.com/file/d/1eP-VDf3sXzR0gEReyhRffeGNfw3S1bg5/view?usp=sharing"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="w-full"
+                >
+                  <QuickAccess2>Academic Calender</QuickAccess2>
+                </Link>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
                 <Card className="w-full">
@@ -122,16 +172,6 @@ export default function Home() {
           </Tabs>
         </div>
       </div>
-
-      <Separator />
-      <div className="flex justify-center items-center p-5 font-bold">
-        Made with ❤️ by
-        <div className="pl-1 text-blue-800">
-          <Link href={"https://www.linkedin.com/in/faizanahmed-saiyed/"}>
-            Faizan & Pavandeep
-          </Link>
-        </div>
-      </div>
     </>
   );
 }
@@ -144,10 +184,23 @@ export function QuickAccess1({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function QuickAccess2({ children }: { children: React.ReactNode }) {
+export function QuickAccess2({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: any;
+}) {
   return (
-    <div className="dark:bg-violet-800 bg-violet-200 dark:text-violet-200 text-violet-800 font-bold rounded-lg w-full text-center py-2 text-sm flex justify-center items-center">
+    <div
+      className="dark:bg-violet-800 bg-violet-200 dark:text-violet-200 text-violet-800 font-bold rounded-lg w-full text-center py-2 text-sm flex justify-center items-center"
+      onClick={onClick}
+    >
       {children}
     </div>
   );
 }
+
+// export default dynamic(() => Promise.resolve(Home), {
+//   ssr: false,
+// });

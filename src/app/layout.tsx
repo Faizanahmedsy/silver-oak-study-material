@@ -5,12 +5,13 @@ import Providers from "@/components/providers";
 import Navbar from "@/components/modules/landing/navbar/navbar";
 import Footer from "@/components/modules/landing/footer/footer";
 import Script from "next/script";
+import BottomBar from "@/components/modules/landing/bottom-bar/bottom-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Silver Oak Study Material",
-  description: "Silver Oak Study Materia",
+  title: "SOU Study Material",
+  description: "SOU Study Material",
 };
 
 export default function RootLayout({
@@ -37,9 +38,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Providers>
-          {/* <Navbar /> */}
+          <Navbar />
           <main>{children}</main>
-          {/* <Footer /> */}
+          {/* <BottomBar /> */}
+          <Footer />
         </Providers>
       </body>
     </html>
