@@ -1,6 +1,4 @@
 "use client";
-import Navbar from "@/components/modules/landing/navbar/navbar";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BTECH_SEM4_CARDS } from "@/constants/data";
 import { Link2 } from "lucide-react";
@@ -18,7 +15,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import dynamic from "next/dynamic";
+import { QuickAccess2 } from "@/components/shared/quick-access-2";
+import { QuickAccess1 } from "@/components/shared/quick-access-1";
+import Timer from "@/components/shared/timer";
 
 export default function Home() {
   const router = useRouter();
@@ -34,8 +33,7 @@ export default function Home() {
   function calculateTimeLeft() {
     const targetDate = dayjs("2024-04-04T12:30:00");
     const now = dayjs();
-    // console.log("targetDate", targetDate.format("YYYY-MM-DD HH:mm:ss"));
-    // console.log("now", now.format("YYYY-MM-DD HH:mm:ss"));
+
     const difference = targetDate.diff(now);
 
     if (difference <= 0) {
@@ -54,17 +52,7 @@ export default function Home() {
     <>
       <div className="flex items-center justify-center min-h-screen md:px-32 px-6 w-full ">
         <div>
-          <div className="font-bold flex justify-center items-center flex-col py-4">
-            <div className="font-medium text-muted-foreground">
-              Time left till exams
-            </div>
-            <div className="text-2xl">
-              {timeLeft.days} Days {timeLeft.hours} Hours
-            </div>
-            <div>
-              {timeLeft.minutes} Minutes {timeLeft.seconds} Seconds
-            </div>
-          </div>
+          <Timer timeLeft={timeLeft} />
           <Tabs defaultValue="btechSem4" className="w-full">
             <div className="flex justify-center items-center w-full">
               <TabsList className="w-full">
@@ -175,32 +163,3 @@ export default function Home() {
     </>
   );
 }
-
-export function QuickAccess1({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="dark:bg-emerald-800 bg-emerald-200  dark:te8xt-emerald-200  text-emerald-00  font-bold rounded-lg w-full text-center py-2 text-sm">
-      {children}
-    </div>
-  );
-}
-
-export function QuickAccess2({
-  children,
-  onClick,
-}: {
-  children: React.ReactNode;
-  onClick?: any;
-}) {
-  return (
-    <div
-      className="dark:bg-violet-800 bg-violet-200 dark:text-violet-200 text-violet-800 font-bold rounded-lg w-full text-center py-2 text-sm flex justify-center items-center"
-      onClick={onClick}
-    >
-      {children}
-    </div>
-  );
-}
-
-// export default dynamic(() => Promise.resolve(Home), {
-//   ssr: false,
-// });
