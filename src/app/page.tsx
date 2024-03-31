@@ -140,7 +140,7 @@ export default function Home() {
               </div>
             </TabsContent>
             <TabsContent value="other">
-              <div className="">
+              <div className="grid md:grid-cols-3 gap-6 w-full">
                 {Array.from({ length: 6 }).map((_, index) => (
                   <Card className="w-full" key={index}>
                     <CardHeader>
