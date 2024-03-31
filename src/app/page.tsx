@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen md:px-32 px-6 w-full ">
+      <div className="flex items-center justify-center min-h-screen md:px-32 px-6 w-full mb-14">
         <div>
           <Timer timeLeft={timeLeft} />
           <Tabs defaultValue="btechSem4" className="w-full">

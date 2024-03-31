@@ -40,8 +40,8 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <main>{children}</main>
-          {/* <BottomBar /> */}
-          <Footer />
+          <BottomBar />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
